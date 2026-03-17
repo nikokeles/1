@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💖 ჩემი სიყვარული 💖</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #0f2027, #203a43);
+    color: white;
+    text-align: center;
+}
+
+/* Başlık */
+h1 {
+    font-size: 28px;
+    margin-top: 25px;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px pink; }
+    to { text-shadow: 0 0 30px red; }
+}
+
+/* Foto */
+.slider {
+    width: 90%;
+    max-width: 320px;
+    margin: 20px auto;
+}
+
+.slider img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 0 20px pink;
+}
+
+/* Yazı */
+p {
+    font-size: 16px;
+    padding: 0 15px;
+    line-height: 1.7;
+}
+
+/* Buton */
+button {
+    width: 85%;
+    max-width: 300px;
+    padding: 15px;
+    margin: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    background: pink;
+}
+
+button:active {
+    transform: scale(0.95);
+    background: red;
+    color: white;
+}
+
+/* Gizli */
+.hidden {
+    display: none;
+    animation: fade 1.5s;
+}
+
+@keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Kalpler */
+.heart {
+    position: fixed;
+    color: red;
+    animation: fall 4s linear;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<h1>💖 ჩემი სიყვარული 💖</h1>
+
+<div class="slider">
+    <img id="photo" src="foto1.jpg">
+</div>
+
+<p>
+შენ ხარ ჩემი გული ❤️ <br><br>
+შენი ღიმილი ჩემთვის ყველაფერია 😊 <br><br>
+მიყვარხარ უსასრულოდ 💕
+</p>
+
+<button onclick="nextPhoto()">📸 ფოტო შეცვლა</button>
+<button onclick="showLove()">💌 წერილი</button>
+<button onclick="showSecret()">🔐 საიდუმლო</button>
+<button onclick="playMusic()">🎵 ჩვენი სიმღერა</button>
+
+<div id="love" class="hidden">
+<p>
+შენ ხარ ჩემი ცხოვრება 💖 <br><br>
+შენ გარეშე ვერ ვიქნები 🥺 <br><br>
+მინდა ყოველთვის შენთან ვიყო 💞
+</p>
+</div>
+
+<div id="secret" class="hidden">
+<p>
+🌙 ყოველ ღამე შენზე ვფიქრობ <br><br>
+☀️ ყოველ დილას შენით ვიღვიძებ <br><br>
+❤️ სამუდამოდ მიყვარხარ ❤️
+</p>
+</div>
+
+<!-- BURAYA SENİN MÜZİĞİN -->
+<audio id="music" src="ses.mp3"></audio>
+
+<script>
+let current = 1;
+
+function nextPhoto() {
+    current = current === 1 ? 2 : 1;
+    document.getElementById("photo").src = "foto" + current + ".jpg";
+}
+
+function showLove() {
+    document.getElementById("love").classList.toggle("hidden");
+}
+
+function showSecret() {
+    document.getElementById("secret").classList.toggle("hidden");
+}
+
+function playMusic() {
+    document.getElementById("music").play();
+}
+
+// Dokununca kalp efekti
+document.addEventListener("click", function(e) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = e.clientX + "px";
+    heart.style.top = e.clientY + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 3000);
+});
+</script>
+
+</body>
+</html>
